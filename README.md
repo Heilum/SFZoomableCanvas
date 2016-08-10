@@ -11,14 +11,14 @@ Bellow is the output for Google Cardboard:
 
 ## Features
 
-* Based on Swift 3;
+* Based on Swift 3 and Xcode 8;
 * The drawing canvas is zoomable;
+* Two modes to differentiate pan gestures;
 * Support undo/redo operations;
 * Strokes' thickness and color is configurable;
 * Share the final image;
 
 ## License
-
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).
 
     
