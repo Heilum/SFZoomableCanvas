@@ -16,7 +16,7 @@ Bellow is the output for Google Cardboard:
 * Two modes to differentiate pan gestures;
 * Support undo/redo operations;
 * Strokes' thickness and color is configurable;
-* Share the final image;
+* Share the final image; 
 
 ## License
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).
