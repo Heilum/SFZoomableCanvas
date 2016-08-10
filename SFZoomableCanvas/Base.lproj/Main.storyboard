@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Zoomable CanvasVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SFZoomableCanvasVC" customModule="SFZoomableCanvas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="viZ-2S-dbr">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSJ-Rb-FoT" customClass="SFCanvasView" customModule="SFZoomableCanvas" customModuleProvider="target">
+                                        <userGuides>
+                                            <userLayoutGuide location="46" affinity="minY"/>
+                                        </userGuides>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="s1F-gm-azn" appends="YES" id="bKv-Xm-1VB"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="ZSJ-Rb-FoT" firstAttribute="leading" secondItem="viZ-2S-dbr" secondAttribute="leading" id="BKK-hz-fF8"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZSJ-Rb-FoT" secondAttribute="bottom" id="L9f-Hr-ObK"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZSJ-Rb-FoT" secondAttribute="trailing" id="jua-E0-SBT"/>
+                                    <constraint firstItem="ZSJ-Rb-FoT" firstAttribute="top" secondItem="viZ-2S-dbr" secondAttribute="top" id="njf-5N-qZR"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rme-Ud-Cza"/>
+                                    <outletCollection property="gestureRecognizers" destination="JRf-9I-nWo" appends="YES" id="F2h-gE-hUH"/>
+                                </connections>
+                            </scrollView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-m4-duG" userLabel="toolsPanel">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfS-Vx-rIN">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ZKM-d5-1sX"/>
+                                        </constraints>
+                                        <state key="normal" image="drawing_tools"/>
+                                        <state key="selected" image="drawing_tools_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onToggleToolsBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCX-U6-zoD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONZ-Sh-Pez" userLabel="undoBtn">
+                                        <state key="normal" image="undo"/>
+                                        <state key="selected" image="drawing_tools_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="undo:" destination="dkx-z0-nzr" eventType="touchUpInside" id="fpG-7z-DqI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-Ry-ZKS" userLabel="redoBtn">
+                                        <state key="normal" image="redo"/>
+                                        <state key="selected" image="drawing_tools_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="redo:" destination="dkx-z0-nzr" eventType="touchUpInside" id="tKo-UZ-bdf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S58-Ij-N4k" userLabel="clearBtn">
+                                        <state key="normal" image="delete_icon"/>
+                                        <state key="selected" image="drawing_tools_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0qg-B6-e5E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mv2-ma-zeE">
+                                        <state key="normal" image="delete_icon"/>
+                                        <state key="selected" image="drawing_tools_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="0va-o0-EQN" kind="presentation" id="gFZ-sc-Tff"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogo-MD-Ej9">
+                                        <state key="normal" image="finger"/>
+                                        <state key="selected" image="finger_selected"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onModeSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fuM-cy-tHK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Mv2-ma-zeE" firstAttribute="top" secondItem="S58-Ij-N4k" secondAttribute="bottom" constant="15" id="3tO-OA-m70"/>
+                                    <constraint firstItem="sRx-Ry-ZKS" firstAttribute="height" secondItem="ONZ-Sh-Pez" secondAttribute="height" id="5Lg-SH-5st"/>
+                                    <constraint firstItem="HfS-Vx-rIN" firstAttribute="top" secondItem="4e3-m4-duG" secondAttribute="top" id="6Mw-zv-UVc"/>
+                                    <constraint firstItem="sRx-Ry-ZKS" firstAttribute="trailing" secondItem="ONZ-Sh-Pez" secondAttribute="trailing" id="Azz-eb-czO"/>
+                                    <constraint firstItem="S58-Ij-N4k" firstAttribute="leading" secondItem="sRx-Ry-ZKS" secondAttribute="leading" id="CnG-P4-C5b"/>
+                                    <constraint firstItem="S58-Ij-N4k" firstAttribute="trailing" secondItem="sRx-Ry-ZKS" secondAttribute="trailing" id="EGs-qg-bnO"/>
+                                    <constraint firstItem="Mv2-ma-zeE" firstAttribute="leading" secondItem="S58-Ij-N4k" secondAttribute="leading" id="GRk-oV-Yya"/>
+                                    <constraint firstItem="ONZ-Sh-Pez" firstAttribute="trailing" secondItem="HfS-Vx-rIN" secondAttribute="trailing" id="HOB-9x-N2D"/>
+                                    <constraint firstItem="S58-Ij-N4k" firstAttribute="top" secondItem="sRx-Ry-ZKS" secondAttribute="bottom" constant="4" id="PmE-qf-0t4"/>
+                                    <constraint firstAttribute="height" constant="353" id="Wht-fW-fiU"/>
+                                    <constraint firstItem="HfS-Vx-rIN" firstAttribute="leading" secondItem="4e3-m4-duG" secondAttribute="leading" id="WoJ-jH-5Fb"/>
+                                    <constraint firstAttribute="width" constant="50" id="X3h-UF-07x"/>
+                                    <constraint firstItem="ONZ-Sh-Pez" firstAttribute="top" secondItem="HfS-Vx-rIN" secondAttribute="bottom" constant="15" id="X9C-06-Eek"/>
+                                    <constraint firstItem="ogo-MD-Ej9" firstAttribute="leading" secondItem="Mv2-ma-zeE" secondAttribute="leading" id="cSA-oQ-IGP"/>
+                                    <constraint firstItem="Mv2-ma-zeE" firstAttribute="trailing" secondItem="S58-Ij-N4k" secondAttribute="trailing" id="dEF-uW-Yc5"/>
+                                    <constraint firstItem="sRx-Ry-ZKS" firstAttribute="top" secondItem="ONZ-Sh-Pez" secondAttribute="bottom" constant="4" id="fSy-xq-Y6y"/>
+                                    <constraint firstItem="ogo-MD-Ej9" firstAttribute="height" secondItem="Mv2-ma-zeE" secondAttribute="height" id="fnP-XB-W66"/>
+                                    <constraint firstItem="sRx-Ry-ZKS" firstAttribute="leading" secondItem="ONZ-Sh-Pez" secondAttribute="leading" id="giI-Xf-8Sg"/>
+                                    <constraint firstItem="ogo-MD-Ej9" firstAttribute="trailing" secondItem="Mv2-ma-zeE" secondAttribute="trailing" id="kOa-WJ-F3w"/>
+                                    <constraint firstItem="ogo-MD-Ej9" firstAttribute="top" secondItem="Mv2-ma-zeE" secondAttribute="bottom" constant="15" id="nvi-uw-MXW"/>
+                                    <constraint firstAttribute="trailing" secondItem="HfS-Vx-rIN" secondAttribute="trailing" id="ps0-TI-1G2"/>
+                                    <constraint firstItem="ONZ-Sh-Pez" firstAttribute="height" secondItem="HfS-Vx-rIN" secondAttribute="height" id="qks-LN-wDF"/>
+                                    <constraint firstItem="ONZ-Sh-Pez" firstAttribute="leading" secondItem="HfS-Vx-rIN" secondAttribute="leading" id="rl4-dY-m9J"/>
+                                    <constraint firstItem="S58-Ij-N4k" firstAttribute="height" secondItem="sRx-Ry-ZKS" secondAttribute="height" id="zNL-hk-ddh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPc-Vb-KdN">
+                                <color key="backgroundColor" red="0.6588235294" green="0.6588235294" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="J3P-nd-p64"/>
+                                    <constraint firstAttribute="width" constant="200" id="gXu-pd-kBP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0G-rC-LtB">
+                                <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
+                                <state key="normal" image="action"/>
+                                <connections>
+                                    <action selector="onShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7xp-8k-Dnr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="viZ-2S-dbr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="03w-Bs-SR3"/>
+                            <constraint firstItem="ZSJ-Rb-FoT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="9sg-SA-1L5"/>
+                            <constraint firstItem="4e3-m4-duG" firstAttribute="top" secondItem="viZ-2S-dbr" secondAttribute="top" constant="20" id="CQf-fB-PCX"/>
+                            <constraint firstItem="x0G-rC-LtB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="ENb-BF-18y"/>
+                            <constraint firstItem="jPc-Vb-KdN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JaT-B8-HIg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x0G-rC-LtB" secondAttribute="trailing" id="Kj0-Ik-B1o"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="viZ-2S-dbr" secondAttribute="bottom" id="Rfr-se-5mn"/>
+                            <constraint firstItem="viZ-2S-dbr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="UkO-Bw-iRK"/>
+                            <constraint firstItem="4e3-m4-duG" firstAttribute="leading" secondItem="viZ-2S-dbr" secondAttribute="leading" constant="20" id="ezJ-JT-dQ6"/>
+                            <constraint firstItem="ZSJ-Rb-FoT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="gcp-ya-4tA"/>
+                            <constraint firstItem="jPc-Vb-KdN" firstAttribute="centerY" secondItem="x0G-rC-LtB" secondAttribute="centerY" id="s7f-kd-1U8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="viZ-2S-dbr" secondAttribute="trailing" constant="-20" id="wzs-2k-pUq"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="canvasPanGesture" destination="s1F-gm-azn" id="OJ3-EM-yqd"/>
+                        <outlet property="canvasView" destination="ZSJ-Rb-FoT" id="rN5-yP-oGC"/>
+                        <outlet property="clearBtn" destination="S58-Ij-N4k" id="Gts-o3-gD7"/>
+                        <outlet property="infoLabel" destination="jPc-Vb-KdN" id="41f-bW-dpI"/>
+                        <outlet property="modeBtn" destination="ogo-MD-Ej9" id="Sfh-8v-Wo7"/>
+                        <outlet property="redoBtn" destination="sRx-Ry-ZKS" id="XE2-Gd-hFm"/>
+                        <outlet property="scrollView" destination="viZ-2S-dbr" id="FlO-TE-ofv"/>
+                        <outlet property="settingBtn" destination="Mv2-ma-zeE" id="0Uv-5v-2qv"/>
+                        <outlet property="shareBtn" destination="x0G-rC-LtB" id="542-lE-FsL"/>
+                        <outlet property="toolBtn" destination="HfS-Vx-rIN" id="RvS-lS-jEI"/>
+                        <outlet property="toolPanelHeightConstraint" destination="Wht-fW-fiU" id="0NV-dB-sUW"/>
+                        <outlet property="toolsPanel" destination="4e3-m4-duG" id="V7I-wH-rul"/>
+                        <outlet property="undoBtn" destination="ONZ-Sh-Pez" id="oLB-t1-0D2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="s1F-gm-azn">
+                    <connections>
+                        <action selector="onCanvasPaning:" destination="BYZ-38-t0r" id="zEv-8r-tbM"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="JRf-9I-nWo">
+                    <connections>
+                        <action selector="onDoubleTaped:" destination="BYZ-38-t0r" id="Nv9-MB-DGf"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="137.6953125" y="137.5"/>
+        </scene>
+        <!--SettingVC-->
+        <scene sceneID="sVl-gY-brD">
+            <objects>
+                <viewController storyboardIdentifier="SFSettingVC" modalPresentationStyle="formSheet" id="0va-o0-EQN" customClass="SFSettingVC" customModule="SFZoomableCanvas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TJX-Uk-dXb"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kad-mL-JeU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rrs-pf-MHf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thickness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvh-Vi-gbQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ip2-V2-n5p">
+                                <connections>
+                                    <action selector="onSlide:" destination="0va-o0-EQN" eventType="valueChanged" id="ncs-jc-tQJ"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fc9-34-tQB" customClass="SFColorPickerView" customModule="SFZoomableCanvas" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-yS-Vtd">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fc9-34-tQB" firstAttribute="top" secondItem="Ttg-yS-Vtd" secondAttribute="top" id="B6v-r6-RdN"/>
+                            <constraint firstItem="Kad-mL-JeU" firstAttribute="top" secondItem="fc9-34-tQB" secondAttribute="bottom" constant="84" id="JFn-h1-nuJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ip2-V2-n5p" secondAttribute="trailing" constant="43" id="M5I-lz-YLz"/>
+                            <constraint firstItem="fc9-34-tQB" firstAttribute="leading" secondItem="ip2-V2-n5p" secondAttribute="leading" id="OAa-66-SM6"/>
+                            <constraint firstItem="Vvh-Vi-gbQ" firstAttribute="leading" secondItem="rrs-pf-MHf" secondAttribute="leadingMargin" constant="35" id="T75-7e-lXP"/>
+                            <constraint firstItem="Vvh-Vi-gbQ" firstAttribute="top" secondItem="TJX-Uk-dXb" secondAttribute="bottom" constant="90" id="VCc-yV-RT2"/>
+                            <constraint firstItem="Ttg-yS-Vtd" firstAttribute="top" secondItem="Vvh-Vi-gbQ" secondAttribute="bottom" constant="47" id="eY0-gr-uPX"/>
+                            <constraint firstItem="Ttg-yS-Vtd" firstAttribute="trailing" secondItem="Vvh-Vi-gbQ" secondAttribute="trailing" id="fxR-Jn-EK8"/>
+                            <constraint firstItem="fc9-34-tQB" firstAttribute="trailing" secondItem="ip2-V2-n5p" secondAttribute="trailing" id="hpa-p6-MnV"/>
+                            <constraint firstItem="ip2-V2-n5p" firstAttribute="top" secondItem="Vvh-Vi-gbQ" secondAttribute="top" id="o0Z-xn-OOE"/>
+                            <constraint firstItem="ip2-V2-n5p" firstAttribute="leading" secondItem="Vvh-Vi-gbQ" secondAttribute="trailing" constant="37" id="uJe-rq-4LF"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="colorPickerView" destination="fc9-34-tQB" id="z90-tg-2dW"/>
+                        <outlet property="thicknessSlider" destination="ip2-V2-n5p" id="nFC-bU-hNr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26j-EI-LgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196.875" y="784.375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="action" width="28" height="40"/>
+        <image name="delete_icon" width="50" height="50"/>
+        <image name="drawing_tools" width="32" height="32"/>
+        <image name="drawing_tools_selected" width="32" height="32"/>
+        <image name="finger" width="22" height="35"/>
+        <image name="finger_selected" width="19" height="32"/>
+        <image name="redo" width="50" height="50"/>
+        <image name="undo" width="50" height="50"/>
+    </resources>
+</document>
