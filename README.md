@@ -5,7 +5,6 @@ This project illustrates how to implement a zoomable drawing canvas on iOS
 
 ![ScreenShot](https://raw.github.com/JagieChen/SFZoomableCanvas/master/IMG_0799.PNG)
 
-Bellow is the output for Google Cardboard:
 
 ![ScreenShot](https://raw.github.com/JagieChen/SFZoomableCanvas/master/IMG_0800.PNG)
 
