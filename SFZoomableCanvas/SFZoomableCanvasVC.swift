@@ -160,9 +160,7 @@ final class SFZoomableCanvasVC: UIViewController {
                 self.scrollView.isScrollEnabled = false;
                 self.canvasPanGesture.isEnabled = true;
                 
-                self.modeBtn.backgroundColor = UIColor.clear();
-                self.modeBtn.layer.borderWidth = 1;
-                self.modeBtn.layer.borderColor = tintColor.cgColor;
+              
                
                 self.modeBtn.isSelected = false;
                 
@@ -172,7 +170,7 @@ final class SFZoomableCanvasVC: UIViewController {
                 self.canvasPanGesture.isEnabled = false;
                 
                 self.modeBtn.isSelected = true;
-                self.modeBtn.backgroundColor = self.tintColor;
+
             }
         }
     }
@@ -186,14 +184,10 @@ final class SFZoomableCanvasVC: UIViewController {
         self.toolBtn.isSelected =  show;
         if self.toolBtn.isSelected {
             
-            self.toolBtn.backgroundColor = self.tintColor;
-            
             self.toolPanelHeightConstraint.constant = 353;
             
         }else{
-            self.toolBtn.backgroundColor = UIColor.clear();
-            self.toolBtn.layer.borderWidth = 1;
-            self.toolBtn.layer.borderColor = tintColor.cgColor;
+          
             
             self.toolPanelHeightConstraint.constant = 50;
         }
@@ -226,17 +220,10 @@ final class SFZoomableCanvasVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.toolBtn.setImage(UIImage(named: "drawing_tools")?.tintWithColor(color: tintColor), for: []);
-        self.toolBtn.setImage(UIImage(named: "drawing_tools_selected")?.tintWithColor(color: UIColor.white()), for: [.selected]);
+       
         self.showToolPanel(show: false,animated:  false);
-        
-        
-        
-        self.modeBtn.setImage(UIImage(named: "finger")?.tintWithColor(color: tintColor), for: []);
-        self.modeBtn.setImage(UIImage(named: "finger_selected")?.tintWithColor(color: UIColor.white()), for: [.selected]);
-
         mode = .drawing
-        
+        self.modeBtn.isEnabled = false;
         
         self.lineColor = tintColor;
         self.thickness = 0.5
@@ -439,9 +426,10 @@ extension SFZoomableCanvasVC:UIScrollViewDelegate{
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        
+        self.modeBtn.isEnabled = scrollView.zoomScale > scrollView.minimumZoomScale;
+        
         let s = NSString(format: "%.01f X",scrollView.zoomScale);
-        
-        
         self.showInfo(info: s as String)
         
     }

@@ -294,10 +294,10 @@
     <resources>
         <image name="action" width="28" height="40"/>
         <image name="delete_icon" width="50" height="50"/>
-        <image name="drawing_tools" width="32" height="32"/>
-        <image name="drawing_tools_selected" width="32" height="32"/>
-        <image name="finger" width="22" height="35"/>
-        <image name="finger_selected" width="19" height="32"/>
+        <image name="drawing_tools" width="50" height="50"/>
+        <image name="drawing_tools_selected" width="50" height="50"/>
+        <image name="finger" width="50" height="50"/>
+        <image name="finger_selected" width="50" height="50"/>
         <image name="redo" width="50" height="50"/>
         <image name="undo" width="50" height="50"/>
     </resources>
