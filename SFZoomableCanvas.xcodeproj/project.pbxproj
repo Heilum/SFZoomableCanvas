@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		7B13D8111D5ACE8D006A1787 /* SFColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13D8101D5ACE8D006A1787 /* SFColorPickerView.swift */; };
 		7B13D8131D5AEFF9006A1787 /* SFGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13D8121D5AEFF9006A1787 /* SFGradientView.swift */; };
-		7B1981A61D599A56004BF95F /* UIImage+SF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1981A51D599A56004BF95F /* UIImage+SF.swift */; };
 		7B46B7051D58E2D3004296A8 /* SFModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46B7041D58E2D3004296A8 /* SFModels.swift */; };
 		7B5B65A01D5B49310075975B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B659F1D5B49310075975B /* README.md */; };
 		7B5B65A31D5B49400075975B /* IMG_0800.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7B5B65A11D5B49400075975B /* IMG_0800.PNG */; };
 		7B5B65A41D5B49400075975B /* IMG_0799.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7B5B65A21D5B49400075975B /* IMG_0799.PNG */; };
 		7B85C2F41D5AB35000972FCC /* SFSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85C2F31D5AB35000972FCC /* SFSettingVC.swift */; };
+		7BB1B0161D5BFF8100D63B4F /* UIImage+SF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1B0151D5BFF8100D63B4F /* UIImage+SF.swift */; };
 		7BE7EAE31D58DBAB00BF0538 /* SFCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7EAE21D58DBAB00BF0538 /* SFCanvasView.swift */; };
 		7BE828BD1D58691A00F4DBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE828BC1D58691A00F4DBB8 /* AppDelegate.swift */; };
 		7BE828BF1D58691A00F4DBB8 /* SFZoomableCanvasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE828BE1D58691A00F4DBB8 /* SFZoomableCanvasVC.swift */; };
@@ -39,12 +39,12 @@
 /* Begin PBXFileReference section */
 		7B13D8101D5ACE8D006A1787 /* SFColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFColorPickerView.swift; sourceTree = "<group>"; };
 		7B13D8121D5AEFF9006A1787 /* SFGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFGradientView.swift; sourceTree = "<group>"; };
-		7B1981A51D599A56004BF95F /* UIImage+SF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+SF.swift"; path = "../../Rainbow/Rainbow/extensions/UIImage+SF.swift"; sourceTree = "<group>"; };
 		7B46B7041D58E2D3004296A8 /* SFModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFModels.swift; sourceTree = "<group>"; };
 		7B5B659F1D5B49310075975B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7B5B65A11D5B49400075975B /* IMG_0800.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0800.PNG; sourceTree = "<group>"; };
 		7B5B65A21D5B49400075975B /* IMG_0799.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0799.PNG; sourceTree = "<group>"; };
 		7B85C2F31D5AB35000972FCC /* SFSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSettingVC.swift; sourceTree = "<group>"; };
+		7BB1B0151D5BFF8100D63B4F /* UIImage+SF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+SF.swift"; sourceTree = "<group>"; };
 		7BE7EAE21D58DBAB00BF0538 /* SFCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFCanvasView.swift; sourceTree = "<group>"; };
 		7BE828B91D58691A00F4DBB8 /* SFZoomableCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFZoomableCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE828BC1D58691A00F4DBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		7BE828BB1D58691A00F4DBB8 /* SFZoomableCanvas */ = {
 			isa = PBXGroup;
 			children = (
-				7B1981A51D599A56004BF95F /* UIImage+SF.swift */,
+				7BB1B0151D5BFF8100D63B4F /* UIImage+SF.swift */,
 				7BE828BC1D58691A00F4DBB8 /* AppDelegate.swift */,
 				7BE7EAE21D58DBAB00BF0538 /* SFCanvasView.swift */,
 				7B46B7041D58E2D3004296A8 /* SFModels.swift */,
@@ -188,8 +188,8 @@
 				7B13D8111D5ACE8D006A1787 /* SFColorPickerView.swift in Sources */,
 				7B46B7051D58E2D3004296A8 /* SFModels.swift in Sources */,
 				7B5B65A01D5B49310075975B /* README.md in Sources */,
-				7B1981A61D599A56004BF95F /* UIImage+SF.swift in Sources */,
 				7BE7EAE31D58DBAB00BF0538 /* SFCanvasView.swift in Sources */,
+				7BB1B0161D5BFF8100D63B4F /* UIImage+SF.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
