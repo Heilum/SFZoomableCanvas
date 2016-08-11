@@ -428,6 +428,9 @@ extension SFZoomableCanvasVC:UIScrollViewDelegate{
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         
         self.modeBtn.isEnabled = scrollView.zoomScale > scrollView.minimumZoomScale;
+        if self.modeBtn.isEnabled == false && self.mode == .positioning{
+            self.mode = .drawing;
+        }
         
         let s = NSString(format: "%.01f X",scrollView.zoomScale);
         self.showInfo(info: s as String)
