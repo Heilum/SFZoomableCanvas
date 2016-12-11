@@ -9,7 +9,7 @@
 import UIKit
 
 class SFSettingVC: UIViewController {
-    private var windowTapgesture:UIGestureRecognizer!
+    fileprivate var windowTapgesture:UIGestureRecognizer!
     
     
     @IBOutlet weak var colorPickerView: SFColorPickerView!
@@ -79,7 +79,7 @@ extension SFSettingVC:UIGestureRecognizerDelegate{
     }
     
     func removeWindowTapGesture(){
-        if let w = self.view.window,g = self.windowTapgesture{
+        if let w = self.view.window,let g = self.windowTapgesture{
             w.removeGestureRecognizer(g);
         }
         

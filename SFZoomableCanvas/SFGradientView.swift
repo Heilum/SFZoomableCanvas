@@ -9,7 +9,12 @@
 import UIKit
 
 class SFGradientView: UIView {
-    override class func layerClass() -> AnyClass { return CAGradientLayer.self }
+   
+    
+    
+    override class var layerClass: AnyClass {
+        return CAGradientLayer.self
+    }
     
     lazy var gradientLayer: CAGradientLayer = {
         return self.layer as! CAGradientLayer

@@ -89,9 +89,9 @@ class SFColorPickerView: UIView {
         hueSaturationImageView.addSubview(hueSaturationCrossHairs);
         
         hueSaturationCrossHairs.layer.cornerRadius = crossHairWidth / 2;
-        hueSaturationCrossHairs.layer.borderColor = UIColor.white().withAlphaComponent(0.8).cgColor;
+        hueSaturationCrossHairs.layer.borderColor = UIColor.white.withAlphaComponent(0.8).cgColor;
         hueSaturationCrossHairs.layer.borderWidth = 2;
-        hueSaturationCrossHairs.layer.shadowColor = UIColor.black().cgColor
+        hueSaturationCrossHairs.layer.shadowColor = UIColor.black.cgColor
         hueSaturationCrossHairs.layer.shadowRadius = 1;
         hueSaturationCrossHairs.layer.shadowOpacity = 0.5
         hueSaturationCrossHairs.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -108,7 +108,7 @@ class SFColorPickerView: UIView {
         let gradientView = SFGradientView(frame: CGRect(x: 0, y: self.bounds.height - gradientViewHeight , width: self.bounds.width, height: gradientViewHeight));
         gradientView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin,UIViewAutoresizing.flexibleWidth];
         //test
-        gradientView.backgroundColor = UIColor.red();
+        gradientView.backgroundColor = UIColor.red;
         
         gradientView.gradientLayer.startPoint = CGPoint(x: 0, y: 0.5);
         gradientView.gradientLayer.endPoint = CGPoint(x: 1, y: 0.5);
@@ -119,7 +119,7 @@ class SFColorPickerView: UIView {
         let brightnessScrab = UIView(frame:CGRect(x: 0, y: 0, width: scrabSize.width, height: scrabSize.height));
         
         brightnessScrab.layer.cornerRadius = scrabSize.width / 2;
-        brightnessScrab.layer.borderColor = UIColor.white().withAlphaComponent(0.8).cgColor;
+        brightnessScrab.layer.borderColor = UIColor.white.withAlphaComponent(0.8).cgColor;
         brightnessScrab.layer.borderWidth = 2;
      
         gradientView.addSubview(brightnessScrab);

@@ -95,14 +95,20 @@ final class SFZoomableCanvasVC: UIViewController {
        
        
         // flip the image
-        context?.scale(x: 1.0, y: -1.0)
-        context?.translate(x: 0.0, y: -size.height)
+        
+        context?.scaleBy(x: 1, y: -1.0);
+        context?.translateBy(x: 0.0, y: -size.height)
+        
+       
         
         // multiply blend mode
         context?.setBlendMode(CGBlendMode.multiply)
         
         let rect = CGRect(x:0, y:0, width:size.width, height:size.height)
-        context?.clipToMask(rect, mask: UIImage(named: "circle_icon")!.cgImage!)
+
+        
+        context?.clip(to: rect, mask: UIImage(named: "circle_icon")!.cgImage!)
+        
         tintColor.setFill()
         context?.fill(rect)
         
@@ -154,7 +160,7 @@ final class SFZoomableCanvasVC: UIViewController {
         
     }
     
-    private var mode:SFCanvasMode = SFCanvasMode.none{
+    fileprivate var mode:SFCanvasMode = SFCanvasMode.none{
         didSet{
             if mode == SFCanvasMode.drawing{
                 self.scrollView.isScrollEnabled = false;
@@ -229,11 +235,13 @@ final class SFZoomableCanvasVC: UIViewController {
         self.thickness = 0.5
         self.infoLabel.textColor = tintColor;
         self.infoLabel.alpha = 0;
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUndoAndRedoButtons), name: Notification.Name.NSUndoManagerDidUndoChange, object: self.undoManager)
        
-        NotificationCenter.default().addObserver(self, selector: #selector(updateUndoAndRedoButtons), name: Notification.Name.NSUndoManagerDidUndoChange, object: self.undoManager);
+      
 
         
-        NotificationCenter.default().addObserver(self, selector: #selector(updateUndoAndRedoButtons), name: Notification.Name.NSUndoManagerDidRedoChange, object: self.undoManager);
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUndoAndRedoButtons), name: Notification.Name.NSUndoManagerDidRedoChange, object: self.undoManager);
         
         
         updateUndoAndRedoButtons();
@@ -253,12 +261,14 @@ final class SFZoomableCanvasVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func delay(_ delay: Double,  closure: ()->()) {
-        DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure);
+    func delay(_ delay: Double,  closure: @escaping ()->()) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure);
+        
+        
     }
 
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true;
     }
     
@@ -274,7 +284,7 @@ final class SFZoomableCanvasVC: UIViewController {
 
     }
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder:Bool {
         return true
     }
     
@@ -312,7 +322,10 @@ final class SFZoomableCanvasVC: UIViewController {
             
             let oldStroks = [SFStroke](self.strokes.prefix(self.strokes.count - 1));
             
-            undoManager.prepare(withInvocationTarget: self).handleUndoRedo(SFStrokeArrayBox(oldStroks), newStrokes: SFStrokeArrayBox(self.strokes));
+            (undoManager.prepare(withInvocationTarget: self) as AnyObject).handleUndoRedo(SFStrokeArrayBox(oldStroks), newStrokes: SFStrokeArrayBox(self.strokes));
+            
+            
+            
             undoManager.setActionName("Add Stroke")
             self.updateUndoAndRedoButtons();
             
@@ -335,7 +348,7 @@ final class SFZoomableCanvasVC: UIViewController {
         self.canvasView.strokes = self.strokes;
         
         //add redo
-        undoManager.prepare(withInvocationTarget: self).handleUndoRedo(newStrokes,newStrokes: oldStrokes);
+        (undoManager.prepare(withInvocationTarget: self) as AnyObject).handleUndoRedo(newStrokes,newStrokes: oldStrokes);
         undoManager.setActionName("Remove Stroke")
     }
     
@@ -385,8 +398,8 @@ final class SFZoomableCanvasVC: UIViewController {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let settingVC = segue.destinationViewController as? SFSettingVC{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let settingVC = segue.destination as? SFSettingVC{
             
             settingVC.initColor = self.lineColor;
             settingVC.colorSelection = { [weak self] (color:UIColor) in
@@ -403,7 +416,7 @@ final class SFZoomableCanvasVC: UIViewController {
         }
     }
     
-    private func showInfo(info:String){
+    fileprivate func showInfo(info:String){
         self.infoLabel.text = info;
         self.infoLabel.alpha = 1.0;
         delay(2) {  [weak self] in
